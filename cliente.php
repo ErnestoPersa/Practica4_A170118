@@ -2,9 +2,9 @@
         require_once "lib/nusoap.php";
         $clientes = new nusoap_client("http://localhost/Practica4EPS/server.php");
         
-        $fallo =$clientes->GetFallo();
-        if ($fallo) {
-            echo "<h3> hay un error </h3><pre>" . $fallo ."</pre>";
+        $error =$clientes->GetError();
+        if ($error) {
+            echo "<h3> hay un error </h3><pre>" . $error ."</pre>";
         }
 
 $resulado = $clientes->call("getCoches", array ("datos" => "Coches"));
@@ -14,7 +14,7 @@ if ($clientes->fault) {
     echo "</pre>";
 }
 else {
-    $error = $clientes->GetFallo();
+    $error = $clientes->GetError();
     if ($error){
         echo "<h2>Error</h2><pre>" . $error . "</pre>";    
     }
